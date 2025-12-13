@@ -1,3 +1,6 @@
 #main server files
 /apache
 /tomcat
+/secureServer/.gradle
+/secureServer/build
+/.vscode
