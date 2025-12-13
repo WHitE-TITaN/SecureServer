@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+}
+
+war {
+    from 'src/main/webapp'
+    webInf { from 'WEB-INF' }
+}
+
+// Task to copy compiled classes into WEB-INF/classes
+task copyClasses(type: Copy) {
+    from sourceSets.main.output
+    into 'web/WEB-INF/classes'
+}
+
+// Make build automatically copy classes
+build.dependsOn(copyClasses)
