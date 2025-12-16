@@ -67,6 +67,8 @@ mkdir C:\tomcat
 keytool -genkey -alias tomcat -keyalg RSA -keystore C:\tomcat\mykeystore.jks -keysize 2048 -validity 90
 ```
 
+>Command format - -genkey -alias ServerType(tomcat, appache etc) -keyalg (algorithm to be used) -keystore (location to store the certificate) -keysize (size of the key) -validity (certificate validity date in days)
+
 Fill in:
 
 * Keystore password
@@ -93,6 +95,8 @@ This creates `mykeystore.jks`.
            SSLEnabled="true"
            scheme="https" secure="true">
     <SSLHostConfig>
+        <!-->certificateKeystoreFile attribute contain the location the certificate
+        the default location will be C:\tomcat\mykeystore.jks<-->
         <Certificate certificateKeystoreFile="C:\tomcat\mykeystore.jks"
                      certificateKeystorePassword="YOUR_PASSWORD"
                      type="RSA" />
